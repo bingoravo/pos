@@ -57,10 +57,23 @@ jQuery(document).ready(function(){
 						type: "GET",
 						dataType: "html",
 						complete : function (req, err) {
+							
+							var headID = document.getElementsByTagName("head")[0];         
+							var newScript = document.createElement('script');
+							newScript.type = 'text/javascript';
+							newScript.src = 'js/performSales.js';
+							headID.appendChild(newScript);
+							
+//							http://jsfiddle.net/mkennedy/eEBZh/
+//							http://jsfiddle.net/eEBZh/18/
+							
 							$(st,"#tabs").append(req.responseText);
+							
+							
 							var clck = '<p style="border: 1px solid; background-color: lemonchiffon; width:654px;height:25px;margin-bottom: 8px;padding-top: 8px;text-align: center">';
 							clck += '<b> Hi Rimaz</b></p>';
 							$(st,"#tabs").append(clck);
+							
 						}
 					});
 				}

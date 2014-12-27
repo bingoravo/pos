@@ -20,5 +20,10 @@ public class HomeController {
 				"This is the message from the controller!");
 		return "home";
 	}
+	
+	@RequestMapping(value = "/productDetails", method = RequestMethod.GET)
+	public String getProductDetails(){
+		return "sucess";
+	}
 
 }
