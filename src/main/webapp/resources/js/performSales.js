@@ -1,16 +1,15 @@
 
 function UI_performSales(){}
 
+UI_performSales.productsList = {};
+
 $(document).ready(function() {
 	
 	if (!loadCheker.isFirstLoad(loadCheker.performSales, "performSales.js")) {
         return;
     }
-	console.log("inside perform sales");
 	
 	$("#btnSearch").click(function(){
-		alert("searched");
-		console.log("searched");
 		UI_performSales.search();
 	});
 });

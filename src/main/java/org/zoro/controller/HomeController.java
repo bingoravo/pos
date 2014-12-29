@@ -18,11 +18,14 @@ public class HomeController {
 		logger.info("Welcome home!");
 		model.addAttribute("controllerMessage",
 				"This is the message from the controller!");
-		return "home";
+		
+		String path ="/WEB-INF/views/home.jsp";
+		return path;
 	}
-	
+
 	@RequestMapping(value = "/productDetails", method = RequestMethod.GET)
-	public String getProductDetails(){
+	public String getProductDetails() {
+		logger.info("get prodcuts called");
 		return "sucess";
 	}
 

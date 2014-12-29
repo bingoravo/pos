@@ -16,7 +16,7 @@
     <row>
         <cell>2</cell>
         <cell>Perform Sales</cell>
-        <cell>jsp/performSales.jsp</cell>
+        <cell>resources/jsp/performSales.jsp</cell>
         <cell>1</cell>
         <cell>2</cell>
         <cell>3</cell>
@@ -26,7 +26,7 @@
     <row>
         <cell>3</cell>
         <cell>Sales Notes</cell>
-        <cell>jsp/salesNotes.jsp</cell>
+        <cell>resources/jsp/salesNotes.jsp</cell>
         <cell>1</cell>
         <cell>4</cell>
         <cell>5</cell>
@@ -46,7 +46,7 @@
     <row>
         <cell>5</cell>
         <cell>Products Details</cell>
-        <cell>jsp/productDetails.jsp</cell>
+        <cell>resources/jsp/productDetails.jsp</cell>
         <cell>1</cell>
         <cell>8</cell>
         <cell>9</cell>
@@ -66,7 +66,7 @@
     <row>
         <cell>5</cell>
         <cell>User Details</cell>
-        <cell>jsp/userDetails.jsp</cell>
+        <cell>resources/jsp/userDetails.jsp</cell>
         <cell>1</cell>
         <cell>11</cell>
         <cell>12</cell>
@@ -86,7 +86,7 @@
     <row>
         <cell>5</cell>
         <cell>Sign Out</cell>
-        <cell>jsp/signOut.jsp</cell>
+        <cell>resources/jsp/signOut.jsp</cell>
         <cell>1</cell>
         <cell>15</cell>
         <cell>16</cell>

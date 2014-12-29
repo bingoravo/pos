@@ -23,7 +23,7 @@ jQuery(document).ready(function(){
 	
 	//Menu click logics
     jQuery("#west-grid").jqGrid({
-        url: "menu.xml",
+        url: "resources/menu.xml",
         datatype: "xml",
         height: "auto",
         pager: false,
@@ -61,7 +61,7 @@ jQuery(document).ready(function(){
 							var headID = document.getElementsByTagName("head")[0];         
 							var newScript = document.createElement('script');
 							newScript.type = 'text/javascript';
-							newScript.src = 'js/performSales.js';
+							newScript.src = 'resources/js/performSales.js';
 							headID.appendChild(newScript);
 							
 //							http://jsfiddle.net/mkennedy/eEBZh/
