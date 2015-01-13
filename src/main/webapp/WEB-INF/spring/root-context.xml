@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd	
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- default-autowire="byName"> -->
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-				
+
+	<!-- <context:component-scan base-package="org.krams.tutorial" /> -->
+
 	<import resource="db.xml" />
-		 
-	
+
+	<tx:annotation-driven />
+	<context:component-scan base-package="org.zoro" />
+
+	<!-- <bean id="homeController" class="org.zoro.controller.HomeController"> -->
+	<!-- <property name="inventoryService"> -->
+	<!-- <ref local="inventoryServiceImpl" /> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<bean id="inventoryServiceImpl" class="org.zoro.service.impl.InventoryServiceImpl">
+		<property name="inventoryDao">
+			<ref local="inventoryDaoImpl" />
+		</property>
+	</bean>
+
+	<bean id="inventoryDaoImpl" class="org.zoro.dao.InventoryDaoImpl"></bean>
+
 </beans>

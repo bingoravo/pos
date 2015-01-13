@@ -35,7 +35,7 @@ jQuery(document).ready(function(){
             {name: "url",width:1,hidden:true}
         ],
         treeGrid: true,
-		caption: "Sanasa Grocery",
+		caption: "ZORO POS",
         ExpandColumn: "menu",
         autowidth: true,
         //width: 180,
@@ -61,7 +61,7 @@ jQuery(document).ready(function(){
 							var headID = document.getElementsByTagName("head")[0];         
 							var newScript = document.createElement('script');
 							newScript.type = 'text/javascript';
-							newScript.src = 'resources/js/performSales.js';
+							newScript.src = 'resources/js/Sales.js';
 							headID.appendChild(newScript);
 							
 //							http://jsfiddle.net/mkennedy/eEBZh/
@@ -71,7 +71,7 @@ jQuery(document).ready(function(){
 							
 							
 							var clck = '<p style="border: 1px solid; background-color: lemonchiffon; width:654px;height:25px;margin-bottom: 8px;padding-top: 8px;text-align: center">';
-							clck += '<b> Hi Rimaz</b></p>';
+							clck += '<b> Sanasa Booking Engine</b></p>';
 							$(st,"#tabs").append(clck);
 							
 						}

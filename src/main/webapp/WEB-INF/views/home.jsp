@@ -62,6 +62,7 @@ html, body {
 <script src="resources/js/lib/jquery.jqGrid.js" type="text/javascript"></script>
 <script src="resources/js/lib/jquery.tablednd.js" type="text/javascript"></script>
 <script src="resources/js/lib/jquery.contextmenu.js" type="text/javascript"></script>
+<script src="resources/js/lib/jquery.autocomplete.min.js" type="text/javascript"></script>
 <script src="resources/js/system.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -71,7 +72,7 @@ html, body {
    TODO: Improve
  */
 loadCheker = {};
-loadCheker.performSales = loadCheker.performSales || {};
+loadCheker.sales = loadCheker.sales || {};
 
 loadCheker.isFirstLoad = function(namesp, jsFile) {
     var isFirst = namesp.firstLoad === undefined;
@@ -83,6 +84,7 @@ loadCheker.isFirstLoad = function(namesp, jsFile) {
 
     return isFirst;
 };
+
 </script>
 
 </head>
@@ -104,7 +106,9 @@ loadCheker.isFirstLoad = function(namesp, jsFile) {
 				<br/>
 
 				<p style="border: 1px solid; background-color: lemonchiffon; width:728px;height:25px;margin-bottom: 8px;padding-top: 8px;text-align: center">
-				<b> This is the main interface to the Booking Engine</b></p>
+				<b> SANASA BOOKING ENGINE</b></p>
+				
+				
 
 <!--  				<iframe src="adds_c.html" style="width:728px; height:100px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0"/>  -->
 
