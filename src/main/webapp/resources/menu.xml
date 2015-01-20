@@ -46,7 +46,7 @@
     <row>
         <cell>5</cell>
         <cell>Products Details</cell>
-        <cell>resources/jsp/productDetails.jsp</cell>
+        <cell>resources/jsp/products.jsp</cell>
         <cell>1</cell>
         <cell>8</cell>
         <cell>9</cell>

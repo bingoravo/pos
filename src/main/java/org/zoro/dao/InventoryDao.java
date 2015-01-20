@@ -9,6 +9,8 @@ public interface InventoryDao {
 
     void addProduct(Product product);
 
+    List<Product> getAllProducts();
+
     List<ProductList> searchProducts(String code);
 
     Product getProductDetails(String productName);

@@ -25,6 +25,13 @@ public class InventoryDaoImpl implements InventoryDao {
 	log.info("Add Inverntory");
 
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Product> getAllProducts() {
+	StringBuilder sb = new StringBuilder();
+	sb.append(" select * from t_product");
+	return entityManager.createNativeQuery(sb.toString()).getResultList();
+    }
 
     @SuppressWarnings("unchecked")
     public List<ProductList> searchProducts(String code) {

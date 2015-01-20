@@ -23,6 +23,10 @@ public class InventoryServiceImpl implements InventoryService {
 
     }
 
+    public List<Product> getAllProducts() {
+	return inventoryDao.getAllProducts();
+    }
+
     public List<ProductList> searchProducts(String code) {
 	return inventoryDao.searchProducts(code);
     }

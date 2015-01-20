@@ -61,7 +61,9 @@ jQuery(document).ready(function(){
 							var headID = document.getElementsByTagName("head")[0];         
 							var newScript = document.createElement('script');
 							newScript.type = 'text/javascript';
-							newScript.src = 'resources/js/Sales.js';
+							//newScript.src = 'resources/js/Sales.js';
+							newScript.src = 'resources/js/products.js';
+							
 							headID.appendChild(newScript);
 							
 //							http://jsfiddle.net/mkennedy/eEBZh/

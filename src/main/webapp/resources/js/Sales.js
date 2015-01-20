@@ -218,7 +218,7 @@ UI_Sales.searchSuccess = function() {
 				rowNum : 10,
 				rowList : [ 10, 20, 30 ],
 				pager : '#pager2',
-				sortname : 'id',
+			//	sortname : 'id',
 				viewrecords : true,
 				sortorder : "desc",
 				caption : "JSON Example"
