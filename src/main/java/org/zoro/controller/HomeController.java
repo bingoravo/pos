@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.zoro.dto.constants.JSPNames;
+import org.zoro.dto.constants.Constants;
 
 @Controller
 public class HomeController {
@@ -17,7 +17,7 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model) {
 	logger.info("Welcome home!");
-	return JSPNames.HOME;
+	return Constants.HOME;
     }
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,12 +26,33 @@ public class InventoryDaoImpl implements InventoryDao {
 	log.info("Add Inverntory");
 
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Product> getAllProducts() {
+	List<Product> allProducts = new ArrayList<Product>();
+
 	StringBuilder sb = new StringBuilder();
-	sb.append(" select * from t_product");
-	return entityManager.createNativeQuery(sb.toString()).getResultList();
+	// sb.append(" select productId, productName, status, noOfStocks, unitPrice, description from t_product");
+	Query query = entityManager.createNativeQuery(
+		"select * from t_product", Product.class);
+	allProducts = query.getResultList();
+
+//	List<Object[]> productObjects = entityManager.createNativeQuery(
+//		sb.toString()).getResultList();
+//
+//	if (productObjects != null) {
+//	    for (Object[] pObject : productObjects) {
+//		Product product = new Product();
+//		product.setProductId((Integer) pObject[0]);
+//		product.setProductName((String) pObject[1]);
+//		product.setStatus((String) pObject[2]);
+//		product.setNoOfStocks((Integer) pObject[3]);
+//		product.setUnitPrice((BigDecimal) pObject[4]);
+//		product.setDescription((String) pObject[5]);
+//	    }
+//	}
+
+	return allProducts;
     }
 
     @SuppressWarnings("unchecked")
