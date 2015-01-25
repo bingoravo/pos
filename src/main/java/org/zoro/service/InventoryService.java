@@ -5,11 +5,12 @@ import java.util.Map;
 
 import org.zoro.dto.BookingCart;
 import org.zoro.dto.ProductList;
+import org.zoro.exception.ModuleException;
 import org.zoro.model.Product;
 
 public interface InventoryService {
 
-    void addProduct(Product product);
+    void addProduct(Product product) throws ModuleException;
 
     List<Product> getAllProducts();
 

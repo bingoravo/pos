@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.xml.bind.ParseConversionEvent;
-
 import org.zoro.dao.InventoryDao;
 import org.zoro.dto.BookingCart;
 import org.zoro.dto.ProductDTO;
 import org.zoro.dto.ProductList;
+import org.zoro.exception.ModuleException;
 import org.zoro.model.Product;
 import org.zoro.service.InventoryService;
 
@@ -18,9 +17,8 @@ public class InventoryServiceImpl implements InventoryService {
 
     private InventoryDao inventoryDao;
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product) throws ModuleException {
 	inventoryDao.addProduct(product);
-
     }
 
     public List<Product> getAllProducts() {

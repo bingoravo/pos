@@ -6,12 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zoro.dto.constants.Constants;
+import org.zoro.exception.ModuleException;
 import org.zoro.model.Product;
 import org.zoro.service.InventoryService;
 
@@ -35,16 +35,24 @@ public class ProductController {
     public @ResponseBody
     String saveProduct(@RequestBody Product product) {
 
-	String result = Constants.SUCCESS;
+	String foward = Constants.DEFAULT_SUCCESS;
 
 	try {
-	    log.info("Saving products");
-	    inventoryService.addProduct(product);
+	    if (product != null) {
+		log.info("Saving products");
+		inventoryService.addProduct(product);
+	    } else {
+		foward = Constants.DEFAULT_ERROR;
+	    }
 
+	} catch (ModuleException me) {
+	    log.error("Module Exception while saving products", me);
+	    foward = me.getMessage();
 	} catch (Exception e) {
-	    result = "error";
+	    log.error("Error while saving products", e);
+	    foward = Constants.DEFAULT_ERROR;
 	}
 
-	return result;
+	return foward;
     }
 }

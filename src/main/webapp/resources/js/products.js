@@ -1,8 +1,7 @@
-function UI_products() {
-};
+function UI_products() {};
 
-$(document).ready(function() {
 
+UI_products.ready = function() {
 	$("#searchProducts").click(function() {
 		UI_products.search();
 	});
@@ -18,8 +17,9 @@ $(document).ready(function() {
 	$("#btnSave").click(function() {
 		UI_products.save();
 	});
-
-});
+	UI_products.search();
+	
+}
 
 UI_products.search = function() {
 	UI_products.searchSuccess();
@@ -40,36 +40,36 @@ UI_products.searchSuccess = function() {
 			{
 				url : 'product/getAllProducts',
 				datatype : "json",
-				colNames : [ 'Product Id', 'Product Name', 'Status',
-						'No of Stocks', 'Unit Price', 'Description' ],
+				colNames : [ 'Product Id', 'Product Name', 'Description','No of Stocks', 'Unit Price', 'Status' ],
 				colModel : [ {
 					name : 'productId',
 					index : 'productId',
+					hidden : true,
 					width : 75
 				}, {
 					name : 'productName',
 					index : 'productName',
-					width : 90
-				}, {
-					name : 'status',
-					index : 'status',
 					width : 100
-				}, {
-					name : 'noOfStocks',
-					index : 'noOfStocks',
-					width : 80,
-					align : "right"
-				}, {
-					name : 'unitPrice',
-					index : 'unitPrice',
-					width : 80,
-					align : "right"
 				}, {
 					name : 'description',
 					index : 'description',
 					width : 150,
 					align : "right"
-				} ],
+				}, {
+					name : 'noOfStocks',
+					index : 'noOfStocks',
+					width : 90,
+					align : "right"
+				}, {
+					name : 'unitPrice',
+					index : 'unitPrice',
+					width : 90,
+					align : "right"
+				}, {
+					name : 'status',
+					index : 'status',
+					width : 80
+				}],
 				rowNum : 10,
 				// rowList : [ 10, 20, 30 ],
 				pager : '#productPager',
@@ -90,7 +90,7 @@ UI_products.searchSuccess = function() {
 
 UI_products.rowClick = function(rowId) {
 
-	$("#btnAddProduct").prop('disabled', true);
+	$("#btnAddProduct").prop('disabled', false);
 	$("#btnEditProduct").prop('disabled', false);
 	$("#btnSave").prop('disabled', true);
 
@@ -140,7 +140,7 @@ UI_products.add = function() {
 
 UI_products.edit = function() {
 	$("#frmProducts :input").prop("disabled", false);
-	$("#btnAddProduct").prop('disabled', true);
+	$("#btnAddProduct").prop('disabled', false);
 	$("#btnEditProduct").prop('disabled', false);
 	$("#btnSave").prop('disabled', false);
 }
@@ -161,11 +161,11 @@ UI_products.save = function() {
 			url : "product/saveProduct",
 			contentType : 'application/json; charset=utf-8',
 			async: false,
-			//dataType : 'json',
 			data : JSON.stringify(product),
 			type : "POST",
 			success : function(response) {
-				alert("Successfully Saved");
+				alert(response);
+				UI_products.search();
 			},
 			error : function() {
 				alert("Please try again");
@@ -191,3 +191,8 @@ UI_products.validateSave = function() {
 	}
 	return true;
 }
+
+
+$(document).ready(function() {
+	UI_products.ready();
+});

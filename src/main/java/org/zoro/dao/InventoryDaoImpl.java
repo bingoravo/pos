@@ -10,7 +10,10 @@ import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.zoro.dto.ProductList;
+import org.zoro.exception.ModuleException;
 import org.zoro.model.Product;
 
 @Repository
@@ -22,35 +25,56 @@ public class InventoryDaoImpl implements InventoryDao {
     private static final Logger log = LoggerFactory
 	    .getLogger(InventoryDaoImpl.class);
 
-    public void addProduct(Product product) {
-	log.info("Add Inverntory");
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void addProduct(Product product) throws ModuleException {
 
+	validate(product.getProductId(), product.getProductName());
+
+	Integer productId = product.getProductId();
+	if (productId != null && productId > 0) {
+	    entityManager.merge(product);
+	    log.info("updated Inverntory");
+	} else {
+	    entityManager.persist(product);
+	    log.info("added new Inverntory");
+	}
+    }
+
+    /**
+     * product name to be unique
+     */
+    @SuppressWarnings("unchecked")
+    private void validate(Integer productId, String productName)
+	    throws ModuleException {
+
+	String sql = "select * from t_product where product_name='"
+		+ productName + "'";
+
+	Query query = entityManager.createNativeQuery(sql, Product.class);
+	List<Product> resultDups = query.getResultList();
+	if (resultDups != null && !resultDups.isEmpty()) {
+	    Product persisted = resultDups.get(0);
+
+	    if (productId != null && productId > 0) {
+		if (!persisted.getProductId().equals(productId)) {
+		    throw new ModuleException(
+			    "Product Name is already taken, please select a different one");
+		}
+	    } else {
+		if (persisted.getProductName().equalsIgnoreCase(productName)) {
+		    throw new ModuleException(
+			    "Product Name is already taken, please select a different one");
+		}
+	    }
+	}
     }
 
     @SuppressWarnings("unchecked")
     public List<Product> getAllProducts() {
 	List<Product> allProducts = new ArrayList<Product>();
-
-	StringBuilder sb = new StringBuilder();
-	// sb.append(" select productId, productName, status, noOfStocks, unitPrice, description from t_product");
 	Query query = entityManager.createNativeQuery(
 		"select * from t_product", Product.class);
 	allProducts = query.getResultList();
-
-//	List<Object[]> productObjects = entityManager.createNativeQuery(
-//		sb.toString()).getResultList();
-//
-//	if (productObjects != null) {
-//	    for (Object[] pObject : productObjects) {
-//		Product product = new Product();
-//		product.setProductId((Integer) pObject[0]);
-//		product.setProductName((String) pObject[1]);
-//		product.setStatus((String) pObject[2]);
-//		product.setNoOfStocks((Integer) pObject[3]);
-//		product.setUnitPrice((BigDecimal) pObject[4]);
-//		product.setDescription((String) pObject[5]);
-//	    }
-//	}
 
 	return allProducts;
     }
