@@ -36,6 +36,11 @@ $(document).ready(function() {
 	$("#addToCart").click(function (){
 		UI_Sales.addToCart();
 	})
+	
+	$("#btnPurchase").click(function (){
+		UI_Sales.purchase();
+	})
+	
 
 });
 
@@ -228,4 +233,42 @@ UI_Sales.searchSuccess = function() {
 		add : false,
 		del : false
 	});
+}
+
+UI_Sales.purchase = function (){
+	
+	if( UI_Sales.validPurchase()){
+		if (confirm("Make a payment of Rs.100.00")){
+			 $.ajax({
+					type : "POST",
+					url : "sales/purchase",
+					contentType : 'application/json; charset=utf-8',
+					async: false,
+					data : JSON.stringify(UI_Sales.cart),
+					success : function(response) {
+						UI_Sales.purchaseSuccess(response);
+					},
+					error : function(e) {
+						alert('Error: ' + e);
+					}
+				});
+		 }
+	}
+}
+
+UI_Sales.validPurchase = function (){
+	var valid = false;
+	if (UI_Sales.cart != null && !$.isEmptyObject(UI_Sales.cart)){
+		valid = true;
+	}else{
+		alert("Please select at least one product to purchase");
+	}
+	
+	return valid;
+}
+
+UI_Sales.purchaseSuccess = function (response){
+	if( response != null){
+		alert(response);
+	}
 }

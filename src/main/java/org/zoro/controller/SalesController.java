@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zoro.dto.BookingCart;
 import org.zoro.dto.ProductList;
+import org.zoro.dto.constants.Constants;
+import org.zoro.exception.ModuleException;
 import org.zoro.model.Product;
 import org.zoro.service.InventoryService;
 
@@ -46,5 +48,25 @@ public class SalesController {
     @ResponseBody
     BookingCart getBookingCart(@RequestBody Map<String, String> cartDetails) {
 	return inventoryService.populateBookigCart(cartDetails);
+    }
+
+    @RequestMapping(value = "purchase", method = RequestMethod.POST)
+    @ResponseBody
+    public String purchase(@RequestBody Map<String, String> cartDetails) {
+
+	String result = Constants.DEFAULT_SUCCESS;
+
+	try {
+	    String userId = "SYSTEM";
+	    inventoryService.purchase(cartDetails, userId);
+	} catch (ModuleException me) {
+	    log.error("Module Exception in purchase " + me);
+	    result = me.getMessage();
+	} catch (Exception e) {
+	    log.error("Excepion in purchase " + e);
+	    result = Constants.DEFAULT_ERROR;
+	}
+	return result;
+
     }
 }

@@ -1,6 +1,8 @@
 package org.zoro.dao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.zoro.dto.ProductList;
 import org.zoro.exception.ModuleException;
 import org.zoro.model.Product;
+import org.zoro.model.UserSales;
 
 @Repository
 public class InventoryDaoImpl implements InventoryDao {
@@ -132,4 +135,28 @@ public class InventoryDaoImpl implements InventoryDao {
 	return entityManager.find(Product.class, productId);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updateProductInventory(Integer productId, Integer noOfStocks) {
+
+	Query query = entityManager
+		.createQuery("update Product set noOfStocks =:noOfStocks where productId =:productId ");
+	query.setParameter("noOfStocks", noOfStocks);
+	query.setParameter("productId", productId);
+	query.executeUpdate();
+
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void performUserSales(String userId, Integer productId,
+	    BigDecimal unitPrice, Integer quantity) {
+
+	UserSales userSales = new UserSales();
+	userSales.setUserId(userId);
+	userSales.setProductId(productId);
+	userSales.setUnitPrice(unitPrice);
+	userSales.setQuantity(quantity);
+	userSales.setTimeStamp(new Date());
+	entityManager.persist(userSales);
+
+    }
 }

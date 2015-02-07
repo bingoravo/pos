@@ -20,4 +20,7 @@ public interface InventoryService {
 
     BookingCart populateBookigCart(Map<String, String> requests);
 
+    boolean purchase(Map<String, String> cartDetails, String userId)
+	    throws ModuleException;
+
 }

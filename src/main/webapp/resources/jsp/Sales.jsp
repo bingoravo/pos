@@ -69,6 +69,14 @@
 							</table>
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<h2>PURCHASE OPTIONS</h2>
+						</td>
+					</tr>
+					<tr>
+						<td align="left"><input type="button" id="btnPurchase" value="Purchase" /></td>
+					</tr>
 				</table>
 			</td>
 			<td>
