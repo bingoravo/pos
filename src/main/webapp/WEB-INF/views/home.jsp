@@ -89,6 +89,8 @@ loadCheker.isFirstLoad = function(namesp, jsFile) {
 
 </head>
 <body>
+ 
+  
   	<div id="LeftPane" class="ui-layout-west ui-widget ui-widget-content">
 		<table id="west-grid"></table>
 	</div> <!-- #LeftPane -->
@@ -114,6 +116,9 @@ loadCheker.isFirstLoad = function(namesp, jsFile) {
 
 			</div>
 		</div>
+		
+		<a href='<c:url value="/j_spring_security_logout" />' > Logout</a>
+		
 	</div> <!-- #RightPane -->
 </body>
 </html>

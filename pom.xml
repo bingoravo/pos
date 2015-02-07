@@ -190,6 +190,18 @@
 			<version>${jackson.version}</version>
 		</dependency>
 		
+		<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-config</artifactId>
+	<version>3.0.5.RELEASE</version>
+        </dependency>
+        
+        <dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+    <version>3.0.5.RELEASE</version>
+</dependency>
+				
 	</dependencies>
 
 	<repositories>
@@ -263,7 +275,7 @@
 					<version>2.3</version>
 					<configuration>
 						<warName>pos</warName>
-						<outputDirectory>/home/rimaz/apps/apache-tomcat-7.0.57/webapps</outputDirectory>
+						<outputDirectory>/home/pathmasri/apps/apache-tomcat-7.0.55/webapps</outputDirectory>
 					</configuration>
 		   </plugin>
 
