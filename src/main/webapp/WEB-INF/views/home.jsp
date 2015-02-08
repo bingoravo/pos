@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="resources/css/jquery-ui-custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="resources/css/ui.jqgrid.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="resources/css/ui.multiselect.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resources/css/auto-complete.css" />
 <style>
 html, body {
 	margin: 0;			/* Remove body margin/padding */

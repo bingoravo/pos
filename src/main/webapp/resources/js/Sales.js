@@ -68,6 +68,8 @@ UI_Sales.clearData = function (){
 	$("#unitPrice").html("");
 	$("#productId").val("");
 	$("#qty").val("");
+	$("#subTotal").html("");
+	$("#subTotal").val("");
 }
 
 UI_Sales.searchSucess = function(response) {
@@ -106,6 +108,15 @@ UI_Sales.addToCart = function (){
   var prodId = $("#productId").val();
   var quantity= $("#qty").val();
   
+	  if (prodId == "") {
+		alert("Please select a product");
+		return false;
+	}
+
+	if (quantity == "" || quantity == 0) {
+		alert("Please select the required quantity");
+		return false;
+	}
   UI_Sales.cart[prodId] = {};
   UI_Sales.cart[prodId] =  quantity;
   UI_Sales.updateBookingData();
@@ -143,7 +154,6 @@ UI_Sales.rebuildBillPanel = function (products){
 	var selProdcts = products.selectedProducts;
 	
 	if(selProdcts != null && selProdcts.length > 0 ){
-		
 		for ( var i = 0; i < selProdcts.length; i++) {
 			var p = selProdcts[i];
 				html = html + "<tr>" +
@@ -168,7 +178,7 @@ UI_Sales.rebuildBillPanel = function (products){
 	
 	html = html + "<tr>" +
 				   		"<td colspan='2'>TOTAL</td>" +
-				   		"<td colspan='2'><label>" + products.total + "</label></td> +" +
+				   		"<td colspan='2'><label id='productsTotal'>" + products.total + "</label></td> +" +
 				  "</tr>";
 	
 	$("#billContent").append(html);
@@ -238,7 +248,8 @@ UI_Sales.searchSuccess = function() {
 UI_Sales.purchase = function (){
 	
 	if( UI_Sales.validPurchase()){
-		if (confirm("Make a payment of Rs.100.00")){
+		var paymentValue = $("#productsTotal").html();
+		if (confirm("Make a payment of Rs." + paymentValue)){
 			 $.ajax({
 					type : "POST",
 					url : "sales/purchase",
