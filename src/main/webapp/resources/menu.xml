@@ -4,11 +4,11 @@
     <total>1</total>
     <records>1</records>
     <row>
-        <cell>1</cell>
-        <cell>Sales Data</cell>
-        <cell></cell>
-        <cell>0</cell>
-        <cell>1</cell>
+        <cell>1</cell> <!-- node id -->
+        <cell>Sales Data</cell> <!-- menu name -->
+        <cell></cell> <!-- redirect url -->
+        <cell>0</cell>  <!-- hierarchy, ie, 0-top, 1- next level -->
+        <cell>1</cell> <!-- sub note count -start -->
         <cell>6</cell>
         <cell>false</cell>
         <cell>false</cell>
@@ -54,7 +54,7 @@
         <cell>true</cell>
     </row>
     <row>
-        <cell>4</cell>
+        <cell>6</cell>
         <cell>User Management</cell>
         <cell></cell>
         <cell>0</cell>
@@ -64,7 +64,7 @@
         <cell>false</cell>
     </row>
     <row>
-        <cell>5</cell>
+        <cell>6</cell>
         <cell>User Details</cell>
         <cell>resources/jsp/userDetails.jsp</cell>
         <cell>1</cell>
@@ -74,8 +74,8 @@
         <cell>true</cell>
     </row>
     <row>
-        <cell>6</cell>
-        <cell>Settings</cell>
+        <cell>7</cell>
+        <cell>Reports</cell>
         <cell></cell>
         <cell>0</cell>
         <cell>14</cell>
@@ -84,12 +84,32 @@
         <cell>false</cell>
     </row>
     <row>
-        <cell>5</cell>
-        <cell>Sign Out</cell>
-        <cell>resources/jsp/signOut.jsp</cell>
+        <cell>8</cell>
+        <cell>User Sales</cell>
+        <cell>resources/jsp/userSales.jsp</cell>
         <cell>1</cell>
         <cell>15</cell>
         <cell>16</cell>
+        <cell>true</cell>
+        <cell>true</cell>
+    </row>
+    <row>
+        <cell>9</cell>
+        <cell>Settings</cell>
+        <cell></cell>
+        <cell>0</cell>
+        <cell>17</cell>
+        <cell>20</cell>
+        <cell>false</cell>
+        <cell>false</cell>
+    </row>
+    <row>
+        <cell>10</cell>
+        <cell>Sign Out</cell>
+        <cell>resources/jsp/signOut.jsp</cell>
+        <cell>1</cell>
+        <cell>18</cell>
+        <cell>19</cell>
         <cell>true</cell>
         <cell>true</cell>
     </row>

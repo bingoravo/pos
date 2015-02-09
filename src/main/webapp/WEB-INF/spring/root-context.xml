@@ -29,6 +29,7 @@
 		</property>
 	</bean>
 
-	<bean id="inventoryDaoImpl" class="org.zoro.dao.InventoryDaoImpl"></bean>
+	<bean id="inventoryDaoImpl" class="org.zoro.dao.impl.InventoryDaoImpl"></bean>
+
 
 </beans>

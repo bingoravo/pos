@@ -1,4 +1,4 @@
-package org.zoro.dao;
+package org.zoro.dao.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.zoro.dao.InventoryDao;
 import org.zoro.dto.ProductList;
 import org.zoro.exception.ModuleException;
 import org.zoro.model.Product;
