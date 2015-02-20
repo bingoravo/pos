@@ -15,18 +15,8 @@ import org.zoro.dto.constants.Constants;
 
 @Controller
 public class LoginController {
-	
-	@RequestMapping(value="/index", method = RequestMethod.GET)
-	public String executeSecurity(ModelMap model, Principal principal ) {
- 
-		String name = principal.getName();
-		model.addAttribute("author", name);
-		model.addAttribute("message", "Welcome To Login Form Based Spring Security Example!!!");
-		return Constants.HOME;
- 
-	}
- 
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+
+	@RequestMapping(value={"/","/login"}, method = RequestMethod.GET)
 	public String login(ModelMap model) {
  
 		return Constants.LOGIN;
@@ -37,12 +27,12 @@ public class LoginController {
 	public String loginerror(ModelMap model) {
  
 		model.addAttribute("error", "true");
-		return "login";
+		return Constants.LOGIN;
  
 	}
  
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logout(ModelMap model) { 
-		return "login";
+		return Constants.LOGIN;
 	}
 }
