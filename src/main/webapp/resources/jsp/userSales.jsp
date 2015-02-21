@@ -11,11 +11,11 @@
 	<table>
 		<tr>
 			<td>Sales Start Date</td>
-			<td><input type="text" value="start" /></td>
+			<td><input type="text" id="startDate" value="start" /></td>
 		</tr>
 		<tr>
 			<td>Sales End Date</td>
-			<td><input type="text" value="end" /></td>
+			<td><input type="text" id="endDate" value="end" /></td>
 			<!-- use jquery calendar -->
 		</tr>
 		<tr>
@@ -23,8 +23,7 @@
 			<td><input type="text" value="SYSTEM" /></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="right"><input type="button"
-				value="Generate" /></td>
+			<td colspan="2" align="right"><input type="button" id="rptGenerate" value="Generate" /></td>
 		</tr>
 	</table>
 
